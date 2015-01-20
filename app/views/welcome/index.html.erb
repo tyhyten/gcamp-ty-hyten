@@ -58,43 +58,41 @@
     </div>
   </div>
 
-  <p>“gCamp has changed my life!  It's the best tool I've ever used.”</p>
-  <p class="text-muted"><em>— Cayla Hayes</em></p>
-  <p>“Before gCamp I was a disorderly slob.  Now I'm more organized than I've ever been”</p>
-  <p class="text-muted"><em>— Leta Jaskolski</em></p>
-  <p>“Don't hesitate - sign up right now! You'll never be the same.”</p>
-  <p class="text-muted"><em>— Lavern Upton</em></p>
+ <% @quotes.each do |quote| %>
+  <p><%= quote[0] %></p>
+  <p><em> - <%= quote[1] %></p></em>
+ <% end %>
 
-  <hr>
+ <hr>
 
   <!-- <footer>
-    <div class="row">
-      <div class="col-md-6">
-        <a href="/about">About</a>
-        |
-        <a href="/terms">Terms</a>
-        |
-        <a href="/faq">FAQ</a>
-        |
-        <a href="/tasks">Tasks</a>
-      </div>
-
-        <div class="col-md-6 text-right">
-          <a href="https://www.linkedin.com">
-          <%= image_tag"linkedin.jpg", class: "img-footer" %>
-          </a>
-          <a href="https://github.com/">
-          <%= image_tag"githublogo.png", class: "img-footer" %>
-          </a>
-          <a href="https://twitter.com/">
-          <%= image_tag"twitterlogo.png", class: "img-footer" %>
-          </a>
-          <a href="https://students.gschool.it/">
-          <%= image_tag"galvanizelogo.png", class: "img-footer" %>
-          </a>
-        </div>
-      </div>
-    </footer> -->
+  #   <div class="row">
+  #     <div class="col-md-6">
+  #       <a href="/about">About</a>
+  #       |
+  #       <a href="/terms">Terms</a>
+  #       |
+  #       <a href="/faq">FAQ</a>
+  #       |
+  #       <a href="/tasks">Tasks</a>
+  #     </div>
+  #
+  #       <div class="col-md-6 text-right">
+  #         <a href="https://www.linkedin.com">
+  #         <%= image_tag"linkedin.jpg", class: "img-footer" %>
+  #         </a>
+  #         <a href="https://github.com/">
+  #         <%= image_tag"githublogo.png", class: "img-footer" %>
+  #         </a>
+  #         <a href="https://twitter.com/">
+  #         <%= image_tag"twitterlogo.png", class: "img-footer" %>
+  #         </a>
+  #         <a href="https://students.gschool.it/">
+  #         <%= image_tag"galvanizelogo.png", class: "img-footer" %>
+  #         </a>
+  #       </div>
+  #     </div>
+  #   </footer> -->
 </div>
 
 
