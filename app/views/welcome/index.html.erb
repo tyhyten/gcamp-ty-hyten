@@ -59,8 +59,8 @@
   </div>
 
  <% @quotes.each do |quote| %>
-  <p><%= quote[0] %></p>
-  <p><em> - <%= quote[1] %></p></em>
+  <div><p><%= quote[0] %></p></div>
+  <div><p><em class="text-muted"> - <%= quote[1] %></p></em></div>
  <% end %>
 
  <hr>
