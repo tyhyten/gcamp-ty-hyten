@@ -1,0 +1,35 @@
+<div class = "container">
+  <a id = "top"></a>
+  <h1>Frequently Asked Questions</h1>
+
+  <hr>
+
+  <ul>
+    <li><%= link_to @questions.question_text[0], @questions.slug[0] %></li>
+    <li><%= link_to @questions.question_text[1], @questions.slug[1] %></li>
+    <li><%= link_to @questions.question_text[2], @questions.slug[2] %></li>
+  </ul>
+
+
+
+  <strong><p><%= @questions.question_text[0] %></p></strong>
+  <p id= "what-is-gcamp"> <%= @answers.answer_text[0] %></p>
+  <%= link_to "Top", "#top" %>
+  <p></p>
+
+
+  <strong><p><%= @questions.question_text[1] %></p></strong>
+  <p id= "how-do-i-join-gcamp"><%= @answers.answer_text[1] %></p>
+  <%= link_to "Top", "#top" %>
+  <p></p>
+
+  <strong><p><%= @questions.question_text[2] %></p></strong>
+  <p id= "when-will-gcamp-be-finished"><%= @answers.answer_text[2] %></p>
+  <%= link_to "Top", "#top" %>
+  <p></p>
+
+</div>
+
+<!-- <body id ="top">
+<body id="middle">
+<body id="bottom">     -->
