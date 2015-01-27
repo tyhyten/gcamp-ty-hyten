@@ -11,24 +11,44 @@
 </div>
 <% end %>
 
-  <div class="form-group">
+<div class="form-group">
 
+</div>
+
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <%= f.label :description %>
   </div>
-
-  <div class="form-group">
-    <div class="control-label col-md-2">
-      <%= f.label :description %>
-    </div>
-    <div class="control-label col-md-4">
-      <%= f.text_field :description, class: 'form-control' %>
-    </div>
+  <div class="control-label col-md-4">
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
+</div>
 
-  <div class="form-group">
-    <div class="col-md-offset-2 col-md-4">
-      <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', tasks_path, class: 'btn btn-default' %>
-    </div>
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <label>Date</label>
   </div>
+  <div class="col-md-4">
+    <%= f.date_select :date %>
+  </div>
+</div>
 
+<div class="form-group">
+  <% unless @task.new_record? %>
+  <div class="control-label col-md-2">
+    <label>Completed?</label>
+  </div>
+  <div class="col-md-2">
+    <%= f.check_box :complete %>
+  </div>
   <% end %>
+</div>
+
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-4">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', tasks_path, class: 'btn btn-default' %>
+  </div>
+</div>
+
+<% end %>
