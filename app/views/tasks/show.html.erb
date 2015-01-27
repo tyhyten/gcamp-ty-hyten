@@ -4,7 +4,7 @@
     <div class = "pull-right">
       <%= link_to 'Edit', edit_task_path, class: 'btn btn-info' %>
     </div>
-    <h1> Finish Homework </h1>
+    <h1><%= @task.description %></h1>
   </div>
 
   <div class="alert alert-success" role="alert">
@@ -13,7 +13,7 @@
 
   <ol class="breadcrumb">
     <li><%= link_to 'Tasks', tasks_path %></li>
-    <li class="active">Finish Homework</li>
+    <li class="active"><%= @task.description %></li>
   </ol>
 
   <!-- <p>
