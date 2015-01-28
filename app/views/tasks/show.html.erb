@@ -1,27 +1,29 @@
 <div class = "container">
   <br>
-  <div class="page-header">
-    <div class="alert alert-success" role="alert">
-      <p id="notice"><%= notice %></p>
+
+  <div class="notice">
+    <% if flash[:notice] %>
+    <div class="alert alert-success text-center">
+      <%= flash[:notice] %>
+      <% end %>
     </div>
-    <div class = "pull-right">
-      <%= link_to 'Edit', edit_task_path, class: 'btn btn-info' %>
-    </div>
-    <h1><%= @task.description %></h1>
   </div>
 
+  <div class="container">
+    <div class="page-header">
+      <div class = "pull-right">
+        <%= link_to 'Edit', edit_task_path, class: 'btn btn-info' %>
+      </div>
+      <h1><%= @task.description %></h1>
+    </div>
 
 
-  <ol class="breadcrumb">
-    <li><%= link_to 'Tasks', tasks_path %></li>
-    <li class="active"><%= @task.description %></li>
-  </ol>
 
-  <!-- <p>
-  <p>Description:</p>
-  <%= @task.description %>
-</p> -->
 
-<!-- <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %> -->
+    <ol class="breadcrumb">
+      <li><%= link_to 'Tasks', tasks_path %></li>
+      <li class="active"><%= @task.description %></li>
+    </ol>
+  </div>
+
 </div>

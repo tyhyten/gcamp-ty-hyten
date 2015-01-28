@@ -8,67 +8,67 @@
 </head>
 <body>
 
-<body name = "top">
+  <body name = "top">
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">gCamp</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">gCamp</a>
+          </div><!--/.navbar-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
+      </nav>
+    </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
 
 
 
-<%= yield %>
+    <%= yield %>
 
-<div class="container">
-  <footer>
-   <div class="row">
-     <div class="col-md-6">
-       <%= link_to "About", about_path %>
-       |
-       <%= link_to "Terms", terms_path %>
-       |
-       <%= link_to "FAQ", faq_path %>
-       |
-       <%= link_to "Tasks", tasks_path %>
-     </div>
+    <div class="container">
+      <footer>
+        <div class="row">
+          <div class="col-md-6">
+            <%= link_to "About", about_path %>
+            |
+            <%= link_to "Terms", terms_path %>
+            |
+            <%= link_to "FAQ", faq_path %>
+            |
+            <%= link_to "Tasks", tasks_path %>
+          </div>
 
-       <div class="col-md-6 text-right">
+          <div class="col-md-6 text-right">
 
-         <%= link_to "http://www.linkedin.com/in/tyhyten" do %>
-         <%= image_tag "linkedin.jpg", class: "img-footer"%>
-           <% end %>
+            <%= link_to "http://www.linkedin.com/in/tyhyten" do %>
+            <%= image_tag "linkedin.jpg", class: "img-footer"%>
+            <% end %>
 
-         <%= link_to "http://github.com/tyhyten" do %>
-         <%= image_tag "githublogo.png", class: "img-footer"%>
-          <% end %>
+            <%= link_to "http://github.com/tyhyten" do %>
+            <%= image_tag "githublogo.png", class: "img-footer"%>
+            <% end %>
 
-         <%= link_to "http://twitter.com/tyhyten" do %>
-         <%= image_tag "twitterlogo.png", class: "img-footer"%>
-         <% end %>
+            <%= link_to "http://twitter.com/tyhyten" do %>
+            <%= image_tag "twitterlogo.png", class: "img-footer"%>
+            <% end %>
 
-         <%= link_to "http://students.gschool.it/cohorts/9/students/210" do %>
-         <%= image_tag "galvanizelogo.png", class: "img-footer"%>
-         <% end %>
+            <%= link_to "http://students.gschool.it/cohorts/9/students/210" do %>
+            <%= image_tag "galvanizelogo.png", class: "img-footer"%>
+            <% end %>
 
-       </div>
-     </div>
-   </footer>
-</div>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-</body>
-</html>
+  </body>
+  </html>
