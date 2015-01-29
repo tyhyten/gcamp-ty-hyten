@@ -5,6 +5,9 @@ gCamp project
 View on Heroku: https://still-mesa-8083.herokuapp.com/
 
 ---
+
+Install:
+
 bundle
 rake db:create db:migrate db:seed
 rails s
