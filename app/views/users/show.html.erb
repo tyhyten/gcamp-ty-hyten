@@ -1,0 +1,22 @@
+<div class="container">
+<h1><%= @user.full_name %></h1>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-2 col-md-offset-2">Name</th>
+      <th></th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @user.first_name + " " + @user.last_name %></td>
+      <td></td>
+      <td><%= mail_to @user.email %></td>
+    </tr>
+  </tbody>
+
+</table>
+</div>
