@@ -1,5 +1,5 @@
 
-<%= form_for(@users, html: {class: 'form-horizontal'}) do |f| %>
+<%= form_for(@user, html: {class: 'form-horizontal'}) do |f| %>
 
   <div class="form-group">
     <%= f.label :first_name, class: "col-md-2" %>
@@ -19,6 +19,9 @@
   <div class="form-group">
     <%= f.submit class: 'btn btn-primary col-md-offset-2'%>
     <%= link_to 'Cancel', users_path, class: 'btn btn-default'%>
-    </div>
+    <% if @user.first_name != nil %>
+    <%= link_to 'Delete', user_path, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
+    <% end %>
+  </div>
   </div>
 <% end %>
