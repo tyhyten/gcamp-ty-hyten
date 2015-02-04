@@ -6,22 +6,21 @@
 
     <h1>Users</h1>
     <hr>
-    <table>
+    <table class="table">
       <thead>
         <tr>
-          <th>Name</th>
+          <th class="col-md-2 col-md-offset-2">Name</th>
           <th></th>
           <th>Email</th>
-          <th class="col-md-offset-2"></th>
         </tr>
       </thead>
 
       <tbody>
         <% @users.each do |user| %>
         <tr>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.email %></td>
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td></td>
+          <td><%= mail_to user.email %></td>
         </tr>
         <% end %>
       </tbody>

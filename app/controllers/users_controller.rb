@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @users = User.new(user_params)
 
     if @users.save
-      redirect_to users_path
+      redirect_to users_path, notice: 'User was successfully created'
     else
       render :new
     end
