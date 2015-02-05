@@ -1,22 +1,42 @@
-<div class="container">
+<!-- <div class="container">
 <h1><%= @user.full_name %></h1>
 <hr>
 <table class="table">
-  <thead>
-    <tr>
-      <th class="col-md-2 col-md-offset-2">Name</th>
-      <th></th>
-      <th>Email</th>
-    </tr>
-  </thead>
+<thead>
+<tr>
+<th class="col-md-2 col-md-offset-2">Name</th>
+<th></th>
+<th>Email</th>
+</tr>
+</thead>
 
-  <tbody>
-    <tr>
-      <td><%= @user.first_name + " " + @user.last_name %></td>
-      <td></td>
-      <td><%= mail_to @user.email %></td>
-    </tr>
-  </tbody>
+<tbody>
+<tr>
+<td><%= @user.first_name + " " + @user.last_name %></td>
+<td></td>
+<td><%= mail_to @user.email %></td>
+</tr>
+</tbody>
 
 </table>
+</div> -->
+<div class="container">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to 'Edit', edit_user_path, class: 'btn btn-info' %>
+    </div>
+
+    <h1><%= @user.full_name %></h1>
+    <hr>
+
+    <dl class="dl-horizontal">
+      <dt>First name</dt>
+      <dd><%= @user.first_name %></dd>
+      <dt>Last name</dt>
+      <dd><%= @user.last_name %></dd>
+      <dt>Email</dt>
+      <dd><%= mail_to @user.email %></dd>
+    </dl>
+
+  </div>
 </div>
