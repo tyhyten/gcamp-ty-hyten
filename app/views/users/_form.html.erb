@@ -1,16 +1,7 @@
 
 <%= form_for(@user, html: {class: 'form-horizontal'}) do |f| %>
-<% if @user.errors.any? %>
-<div id="error_explanation", class="alert alert-danger">
-  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+<%= render partial: 'share/form', locals: { error_var: @user } %>
 
   <div class="form-group">
     <%= f.label :first_name, class: "col-md-2" %>
