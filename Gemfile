@@ -26,6 +26,9 @@ gem 'bootstrap-sass', '~> 3.3.1'
 
 gem 'pg'
 
+gem "spring-commands-rspec"
+
+
 
 #gem 'haml'
 # autoprefixer added
