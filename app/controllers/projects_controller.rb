@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
       if @project.save
         redirect_to @project, notice: 'Project was successfully created'
       else
+        flash[:alert]
         render :new
       end
     end

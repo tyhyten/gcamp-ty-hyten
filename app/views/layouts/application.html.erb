@@ -24,6 +24,9 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+              <% if logged_in? %>
+              <%= link_to "Current User", current_user %>
+              <% end %>
               <%= link_to 'Sign Up', new_user_path, class: "navbar-brand" %>
               <%= link_to 'Sign In', login_path, class: "navbar-brand" %>
             </ul>
@@ -41,6 +44,18 @@
       </div>
     </div>
   </div>
+
+  <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <% flash.each do |message_type, message| %>
+  <div class="alert alert-danger"<%= message_type %>"><%= message %></div>
+  <% end %>
+
 
     <%= yield %>
 

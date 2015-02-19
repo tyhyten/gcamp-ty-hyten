@@ -21,8 +21,12 @@
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_path, notice: 'User was successfully created'
+      log_in @user
+      redirect_to @user, notice: 'User was successfully created'
     else
+      # flash[:alert] = 'There were some errors on the page: '
+      # flash[:alert] << "<br>"
+      # flash[:alert] << @user.errors.full_messages.join("<br>")
       render :new
     end
   end
@@ -46,7 +50,7 @@
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
 end
