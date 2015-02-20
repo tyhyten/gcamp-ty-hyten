@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :logged_in?
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
@@ -72,4 +73,17 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:description, :complete, :date)
     end
+
+    def current_user
+      if session[:user_id]
+        User.find(session[:user_id])
+      end
+    end
+
+    def logged_in?
+      if current_user.nil?
+      redirect_to root_path
+      end
+    end
+
 end

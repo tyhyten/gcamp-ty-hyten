@@ -1,7 +1,8 @@
-<% if error_var.errors.any? %>
+<% if user.errors.empty? %>
+<% else %>
 <div id="error_explanation", class="alert alert-danger">
   <ul>
-    <% error_var.errors.full_messages.each do |message| %>
+    <% user.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
   </ul>
