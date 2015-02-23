@@ -38,7 +38,7 @@
       </nav>
     </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="container">
+  <!-- <div class="container">
     <div class="notice">
       <% if flash[:notice] %>
       <div class="alert alert-success text-center">
@@ -46,18 +46,18 @@
         <% end %>
       </div>
     </div>
-  </div>
-
+  </div> -->
+<div class="container">
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
   <% end %>
   <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
-
-  <% flash.each do |message_type, message| %>
+</div>
+  <!-- <% flash.each do |message_type, message| %>
   <div class="alert alert-danger"<%= message_type %>"><%= message %></div>
-  <% end %>
+  <% end %> -->
 
 
     <%= yield %>
