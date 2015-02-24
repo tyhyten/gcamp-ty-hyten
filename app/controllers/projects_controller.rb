@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
       @project = Project.destroy(params[:id])
 
       @project.destroy
-      redirect_to projects_path
+      redirect_to projects_path, notice: 'Project was succssfully deleted'
     end
 
     private
