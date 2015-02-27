@@ -3,7 +3,8 @@
     <div class="pull-right">
       <%= link_to 'Edit', edit_project_path, class: 'btn btn-info' %>
       <%= link_to 'Delete', project_path, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
-    </div>
+      <%= link_to 'New Task', new_project_task_path(@project), class: 'btn btn-default'  %>
+  </div>
 
     <h1><%= @project.name %></h1>
 
