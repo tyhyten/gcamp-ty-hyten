@@ -4,12 +4,10 @@
   </div>
     <ol class="breadcrumb">
       <li><%= link_to 'Tasks', tasks_path %></li>
-      <li><%= link_to @task.description, task_path %></li>
+      <li><%= link_to @project.name, project_path(@project) %></li>
       <li class="active"><%= @task.description %></li>
     </ol>
 
     <%= render 'form' %>
 
-    <%= link_to 'Show', @task %> |
-    <%= link_to 'Back', tasks_path %>
   </div>
