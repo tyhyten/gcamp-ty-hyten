@@ -4,7 +4,12 @@
       <%= link_to 'New Task', new_project_task_path, class: 'btn btn-info' %>
     </div>
 
-    <h1>Tasks</h1>
+    <h1>Tasks for <%= @project.name %></h1>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Projects', projects_path %></li>
+    <li><%= link_to @project.name, project_path(@project) %></li>
+    <li class="active">Tasks</li>
+  </ol>
 
   </div>
 
@@ -27,6 +32,7 @@
           <td><%= task.complete %></td>
           <td><%= task.date %></td>
           <td class="text-right">
+            <%= link_to 'Show', project_task_path(@project, task), class: 'btn btn-success' %>
             <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-info' %>
             <%= link_to 'Delete', project_task_path(@project, task), class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
           </td>

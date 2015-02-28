@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
 
   get 'terms' => 'welcome#terms'
-
-  get 'tasks' => 'welcome#tasks'
+  # get 'tasks' => 'welcome#tasks'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
