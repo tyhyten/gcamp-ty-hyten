@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       log_in @user
-      redirect_to @user
+      redirect_to root_path, notice: 'User was successfully signed in'
     else
       @user = User.new
       @user.errors[:base] << ("User/Password incorrect")

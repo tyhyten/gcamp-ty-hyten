@@ -22,7 +22,7 @@
 
     if @user.save
       log_in @user
-      redirect_to @user, notice: 'User was successfully created'
+      redirect_to root_path, notice: 'User was successfully created'
     else
       render :new
     end
