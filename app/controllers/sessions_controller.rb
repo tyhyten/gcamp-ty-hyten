@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to root_path
+    redirect_to root_path, notice: 'User was successfully signed out'
   end
 end

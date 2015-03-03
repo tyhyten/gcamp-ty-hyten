@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tyhyten/gcamp-ty-hyten.svg?branch=master)](https://travis-ci.org/tyhyten/gcamp-ty-hyten)
+
 gCamp project
 
 == README
