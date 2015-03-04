@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    # I think this can be deleted
   end
 
   def create
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
       log_in @user
       redirect_to root_path, notice: 'User was successfully signed in'
     else
-      @user = User.new
+      @user = User.new # can delete this?
       @user.errors[:base] << ("User/Password incorrect")
       render 'new'
     end
