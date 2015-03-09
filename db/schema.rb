@@ -1,4 +1,4 @@
-# encoding: UTF-8
+``# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309205523) do
+ActiveRecord::Schema.define(version: 20150309211334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150309205523) do
   create_table "memberships", force: :cascade do |t|
     t.integer "project_id"
     t.integer "user_id"
-    t.boolean "owner"
+    t.integer "role"
   end
 
   add_index "memberships", ["project_id"], name: "index_memberships_on_project_id", using: :btree
