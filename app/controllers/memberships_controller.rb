@@ -5,6 +5,10 @@ class MembershipsController < ApplicationController
     @memberships = @project.memberships.all
   end
 
+  def new
+    @membership = Membership.new
+  end
+
   def create
     @project = Project.find(params[:project_id])
     @membership = Membership.new(membership_params)
@@ -12,7 +16,7 @@ class MembershipsController < ApplicationController
     if @membership.save
       redirect_to project_memberships_path(@project)
     else
-      render 'new'
+      render 'index'
     end
   end
 
@@ -23,10 +27,16 @@ class MembershipsController < ApplicationController
     redirect_to project_memberships_path(@project)
   end
 
+  def update
+    @project = Project.find(params[:project_id])
+    @membership = Membership.find(params[:id])
+    @membership.update(membership_params)
+      redirect_to project_memberships_path(@project)
+  end
+
   private
 
     def membership_params
       params.require(:membership).permit(:project_id, :user_id, :role)
     end
-
 end
