@@ -12,18 +12,20 @@
 
   <div class="well form-inline">
     <%= form_for [@project, @membership] do |f| %>
-    <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: true}, {class: "form-control"} %>
-    <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: true}, {class: "form-control"}) %>
+    <%= f.collection_select :user_id, User.all, :id, :full_name, {prompt: "Please select a user..."}, {class: "form-control"} %>
+    <%= f.select(:role, [["Member", :member],["Owner", :owner]], {prompt: "Member"}, {class: "form-control"}) %>
     <%= f.submit 'Add New Member', class: "btn btn-primary" %>
-  <% end %>
+    <% end %>
   </div>
 
   <% @project.memberships.each do |membership| %>
-        <%= form_for [@project, membership] do |f| %>
-        <%= membership.user.full_name %>
-        <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
-        <%= f.submit 'Update', class: 'btn btn-info' %>
-        <%= link_to 'Delete', project_membership_path(@project, membership), class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
+  <div class="form-inline">
+    <%= form_for [@project, membership] do |f| %>
+    <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
+    <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
+    <%= f.submit 'Update', class: 'btn btn-info' %>
+    <%= link_to project_membership_path(@project, membership), method: :delete do  %>
+      <i class="glyphicon glyphicon-remove"></i><% end %>
     <% end %>
   <% end %>
-</div>
+  </div>
