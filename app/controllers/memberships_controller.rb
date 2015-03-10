@@ -14,7 +14,7 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     @membership.project_id = @project.id
     if @membership.save
-      redirect_to project_memberships_path(@project)
+      redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was successfully added"
     else
       render 'index'
     end

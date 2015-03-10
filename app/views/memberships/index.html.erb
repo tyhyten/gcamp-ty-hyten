@@ -9,11 +9,11 @@
     <li><%= link_to @project.name, project_path(@project) %></li>
     <li class="active">Memberships</li>
   </ol>
-
+  <%= render partial: 'share/form', locals: { user: @membership } %>
   <div class="well form-inline">
     <%= form_for [@project, @membership] do |f| %>
     <%= f.collection_select :user_id, User.all, :id, :full_name, {prompt: "Please select a user..."}, {class: "form-control"} %>
-    <%= f.select(:role, [["Member", :member],["Owner", :owner]], {prompt: "Member"}, {class: "form-control"}) %>
+    <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
     <%= f.submit 'Add New Member', class: "btn btn-primary" %>
     <% end %>
   </div>
