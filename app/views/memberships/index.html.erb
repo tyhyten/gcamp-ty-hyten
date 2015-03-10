@@ -13,6 +13,18 @@
     <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: false}, {class: "form-control"} %>
     <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
     <%= f.submit 'Add New Member', class: "btn btn-primary" %>
-    <% end %>
+
   </div>
+<table>
+  <% @memberships.each do |membership| %>
+    <tr>
+      <td>
+        <%= membership.user.full_name %>
+        <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
+        <%= link_to 'Delete', project_membership_path(@project, membership), class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
 </div>

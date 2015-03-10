@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @membership = Membership.new
-    @memberships = @project.memberships
+    @memberships = @project.memberships.all
   end
 
   def create
@@ -14,6 +14,13 @@ class MembershipsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @membership = Membership.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @membership.destroy
+    redirect_to project_memberships_path(@project)
   end
 
   private
