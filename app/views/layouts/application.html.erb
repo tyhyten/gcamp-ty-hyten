@@ -33,20 +33,10 @@
               <% end %>
 
             </ul>
-          </div><!--/.navbar-collapse -->
+          </div>
         </div>
       </nav>
     </div>
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-  <!-- <div class="container">
-    <div class="notice">
-      <% if flash[:notice] %>
-      <div class="alert alert-success text-center">
-        <%= flash[:notice] %>
-        <% end %>
-      </div>
-    </div>
-  </div> -->
 <div class="container">
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -55,9 +45,7 @@
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
 </div>
-  <!-- <% flash.each do |message_type, message| %>
-  <div class="alert alert-danger"<%= message_type %>"><%= message %></div>
-  <% end %> -->
+
 
 
     <%= yield %>
