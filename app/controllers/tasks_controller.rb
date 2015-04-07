@@ -10,6 +10,8 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @project = Project.find(params[:project_id])
+
+    @comment = Comment.new
   end
 
   def new
