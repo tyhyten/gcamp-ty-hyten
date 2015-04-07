@@ -17,8 +17,10 @@
   <h1>Comments</h1>
     <strong>Due on:</strong> <%= @task.date %>
 
-  <%= form_for(@comment) do |f| %>
-  <%= f.text_field : %>
+  <%= form_for [@project, @task, @comment] do |f| %>
+  <%= f.text_field :message %>
+  <%= f.submit %>
+  <% end %>
 
   </div>
 </div>

@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      resources :comments
+    end
   end
-
 
   resources :projects do
     resources :memberships
