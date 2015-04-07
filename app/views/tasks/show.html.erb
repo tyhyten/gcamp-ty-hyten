@@ -9,13 +9,16 @@
       <h1><%= @task.description %></h1>
     </div>
 
-
-
-
     <ol class="breadcrumb">
       <li><%= link_to 'Tasks', project_tasks_path(@project) %></li>
       <li class="active"><%= @task.description %></li>
     </ol>
-  </div>
 
+  <h1>Comments</h1>
+    <strong>Due on:</strong> <%= @task.date %>
+
+  <%= form_for(@comment) do |f| %>
+  <%= f.text_field : %>
+
+  </div>
 </div>
