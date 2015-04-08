@@ -25,7 +25,7 @@ describe 'User can CRUD tasks' do
   end
 
   scenario 'User can view a task' do
-    click_on "Show"
+    click_on "vegan dog"
     expect(page).to have_content "vegan dog"
   end
 
@@ -37,7 +37,7 @@ describe 'User can CRUD tasks' do
   end
 
   scenario 'User can destroy a  task' do
-    click_on "Delete"
+    click_link "delete_icon_test"
     expect(page).to have_content "Task was successfully destroyed."
   end
 end
