@@ -9,8 +9,9 @@ class TasksController < ApplicationController
 
   def show
     @user = current_user
-    @task = Task.find(params[:id])
     @project = Project.find(params[:project_id])
+
+    @task = Task.find(params[:id])
 
     @comment = Comment.new
 
