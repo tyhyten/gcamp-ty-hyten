@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true
   validates :password, presence: true, :on => :create
-  has_many :memberships
-  has_many :projects, through: :memberships
+  has_many :memberships, dependent: :destroy
+  has_many :projects, through: :memberships, dependent: :destroy
 
-  has_many :comments
-  has_many :tasks, through: :comments
+  has_many :comments, dependent: :destroy
+  has_many :tasks, through: :comments, dependent: :destroy
   has_secure_password
 
 end
