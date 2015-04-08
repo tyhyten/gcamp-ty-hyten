@@ -15,5 +15,8 @@
       <p>Human collaboration and communication is what drives us, and it infuses every feature of gCamp.</p>
     </div>
   </div>
-
+    <div>
+      <p>gCamp is extremely active. Check out our killer stats below!</p>
+      <%= "#{pluralize(@projects.count, 'Project')}, #{pluralize(@tasks.count, 'Tasks')}, #{pluralize(@projects.count, 'Project Member')}, #{pluralize(@users.count, 'User')}, #{pluralize(@comments.count, "Comment")}" %>
+    </div>
 </div>

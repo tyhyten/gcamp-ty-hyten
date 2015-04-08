@@ -4,6 +4,11 @@ class WelcomeController < ApplicationController
   end
 
   def about
+    @users = User.all
+    @projects = Project.all
+    @memberships = Membership.all
+    @tasks = Task.all
+    @comments = Comment.all
   end
 
   def terms
