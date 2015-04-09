@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  layout 'current_user'
   def new
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:task_id])

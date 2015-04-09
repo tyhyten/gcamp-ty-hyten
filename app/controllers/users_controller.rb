@@ -1,5 +1,5 @@
   class UsersController < ApplicationController
-
+  layout 'current_user'
   def index
     @users = User.all
   end
