@@ -8,7 +8,6 @@
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
-
   <body name = "top">
     <div class="container">
       <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -22,21 +21,38 @@
             </button>
             <%= link_to 'gCamp', root_path, class: "navbar-brand" %>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user %>
+          <% if current_user %>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <% @projects.each do |project| %>
+                <li> <%= link_to project.name, project_path(project) %> </li>
+                <% end %>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </ul>
+            <%= link_to "Users", current_user, class: "navbar-brand" %>
+            <% end %>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <% if current_user %>
                 <%= link_to current_user.full_name, current_user, class: "navbar-brand" %>
                 <%= link_to "Sign Out", logout_path, method: :delete, class: "navbar-brand" %>
-              <% else %>
+                <% else %>
                 <%= link_to 'Sign Up', signup_path, class: "navbar-brand" %>
                 <%= link_to 'Sign In', login_path, class: "navbar-brand" %>
-              <% end %>
-
-            </ul>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
+
+
 <div class="container">
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -45,8 +61,6 @@
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
 </div>
-
-
 
     <%= yield %>
 

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
    include SessionsHelper
+  before_action :project_memberships
 
    def current_user
      if session[:user_id]
@@ -16,4 +17,10 @@ class ApplicationController < ActionController::Base
      end
    end
    # ask why having this in the SessionsHelper, which is included in the ApplicationsController isn't working?
+
+    def project_memberships
+      if current_user
+      @projects = current_user.projects
+      end
+    end
 end
