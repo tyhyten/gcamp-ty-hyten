@@ -22,6 +22,11 @@ class ProjectsController < ApplicationController
     def create
       @project = Project.new(project_params)
       if @project.save
+        @membership = Membership.new
+        @membership.project_id = @project.id
+        @membership.user_id = current_user.id
+        @membership.role = 1
+        @membership.save
         redirect_to @project, notice: 'Project was successfully created'
       else
         flash[:alert]
