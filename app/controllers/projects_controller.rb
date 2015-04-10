@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
     before_action :logged_in?
     layout 'current_user'
     def index
-      @projects = Project.all
+      @user = current_user
+      @projects = @user.projects
     end
 
     def show
