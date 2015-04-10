@@ -23,4 +23,20 @@ class ApplicationController < ActionController::Base
       @projects = current_user.projects
       end
     end
+
+    def existing_member?
+      @project = Project.find(params[:project_id])
+      unless @project.users.include?(current_user)
+        redirect_to projects_path
+        flash[:alert] = "You do not have access to that project and are redirected to the projects path"
+      end
+    end
+
+    def project_owner?
+      @project = Project.find(params[:id])
+      unless Membership.find_by(project_id: @project, user_id: current_user, role: 1)
+        redirect_to project_path(@project)
+        flash[:alert] = "You do not have access."
+      end
+    end
 end

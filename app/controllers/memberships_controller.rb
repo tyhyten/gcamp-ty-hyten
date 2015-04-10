@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  before_action :existing_member?
   layout 'current_user'
   def index
     @project = Project.find(params[:project_id])

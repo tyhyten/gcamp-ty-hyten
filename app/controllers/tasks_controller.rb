@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   layout 'current_user'
+  before_action :existing_member?
   before_action :logged_in?
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 

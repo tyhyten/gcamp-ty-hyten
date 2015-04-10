@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :logged_in?
+    before_action :project_owner?, only: [:edit]
     layout 'current_user'
     def index
       @user = current_user
@@ -9,7 +10,6 @@ class ProjectsController < ApplicationController
     def show
       @project = Project.find(params[:id])
       @memberships = @project.memberships
-      @tasks
     end
 
     def new
