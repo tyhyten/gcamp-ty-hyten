@@ -20,7 +20,7 @@
 
   def create
     @user = User.new(user_params)
-
+    # @user.admin = false
     if @user.save
       log_in @user
       redirect_to new_project_path, notice: 'User was successfully created'
@@ -48,7 +48,7 @@
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :admin, :password, :password_confirmation)
   end
 
   def user_valid?

@@ -17,6 +17,12 @@
     <%= f.label :email, class: "col-md-2" %>
     <%= f.email_field :email, class: "col-md-4" %>
   </div>
+  <% if current_user.admin == true %>
+  <div class="form-group">
+  <%= f.label :admin %>
+  <%= f.check_box :admin %>
+  </div>
+  <% end %>
 
   <!-- <div class="form-group">
     <%= f.label :password, class: "col-md-2" %>
