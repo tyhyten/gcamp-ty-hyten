@@ -20,11 +20,14 @@
         <tr>
           <td><%= link_to user.first_name + " " + user.last_name, user %></td>
           <td></td>
+          <% if current_user.id == user.id %>
           <td><%= mail_to user.email %></td>
           <td class="text-right">
-            <% if current_user.id == user.id %>
             <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info' %>
             <%= link_to 'Delete', user, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% else %>
+            <td></td>
+            <td></td>
             <% end %>
           </td>
         </tr>
