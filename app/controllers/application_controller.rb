@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :project_owner?
   helper_method :project_owner_membership_index?
   helper_method :existing_member?
+  helper_method :last_owner?
    def current_user
      if session[:user_id]
        User.find(session[:user_id])
@@ -51,4 +52,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def last_owner?
+      @project = Project.find(params[:project_id])
+      count = @project.memberships.where(role: 1).count
+      count >= 1
+    end
 end

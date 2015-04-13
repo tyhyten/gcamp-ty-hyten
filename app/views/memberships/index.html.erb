@@ -27,8 +27,10 @@
     <% if project_owner_membership_index? %>
     <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
     <%= f.submit 'Update', class: 'btn btn-info' %>
+      <% unless last_owner? %>
     <%= link_to project_membership_path(@project, membership), method: :delete do  %>
     <i class="glyphicon glyphicon-remove"></i><% end %>
+      <% end %>
     <% else %>
       <%= membership.role %>
     <% if current_user.id == membership.user_id  %>
