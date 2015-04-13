@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :project_memberships
   helper_method :project_owner?
   helper_method :project_owner_membership_index?
-
+  helper_method :existing_member?
    def current_user
      if session[:user_id]
        User.find(session[:user_id])
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       @project = Project.find(params[:project_id])
       unless @project.users.include?(current_user)
         redirect_to projects_path
-        flash[:alert] = "You do not have access to that project and are redirected to the projects path"
+        flash[:alert] = "You do not have access to that project."
       end
     end
 
@@ -50,4 +50,5 @@ class ApplicationController < ActionController::Base
         false
       end
     end
+
 end

@@ -31,6 +31,10 @@
     <i class="glyphicon glyphicon-remove"></i><% end %>
     <% else %>
       <%= membership.role %>
+    <% if current_user.id == membership.user_id  %>
+      <%= link_to project_membership_path(@project, membership), method: :delete do  %>
+      <i class="glyphicon glyphicon-remove"></i><% end %>
+    <% end  %>
     <% end %>
     <% end %>
     <% end %>

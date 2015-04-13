@@ -1,8 +1,9 @@
 class MembershipsController < ApplicationController
-  before_action :existing_member?
-  before_action :project_owner_membership_index?, only: [:new, :create, :destroy, :update]
+  before_action :existing_member?, only: [:index, :new, :create, :update]
+  before_action :project_owner_membership_index?, only: [:new, :create, :update]
   layout 'current_user'
   def index
+    @user = current_user
     @project = Project.find(params[:project_id])
     @membership = Membership.new
     @memberships = @project.memberships.all
@@ -26,8 +27,10 @@ class MembershipsController < ApplicationController
   def destroy
     @membership = Membership.find(params[:id])
     @project = Project.find(params[:project_id])
+    if current_user.id == @membership.user_id
     @membership.destroy
-      redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was successfully deleted"
+      redirect_to project_path(@project), notice: "#{@membership.user.full_name} was successfully deleted"
+    end
   end
 
   def update
