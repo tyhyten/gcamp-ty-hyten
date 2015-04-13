@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
        redirect_to root_path
      end
    end
-   # ask why having this in the SessionsHelper, which is included in the ApplicationsController isn't working?
 
     def project_memberships
       if current_user
@@ -52,9 +51,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
+
     def last_owner?
-      @project = Project.find(params[:project_id])
-      count = @project.memberships.where(role: 1).count
-      count >= 1
+      project = Project.find(params[:project_id])
+      count = project.memberships.where(role: 1).count
+      count == 1
     end
+
 end
