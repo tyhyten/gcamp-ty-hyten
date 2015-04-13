@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :existing_member?
+  before_action :project_owner_membership_index?, only: [:new, :create, :destroy, :update]
   layout 'current_user'
   def index
     @project = Project.find(params[:project_id])

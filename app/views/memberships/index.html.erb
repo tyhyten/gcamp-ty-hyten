@@ -3,12 +3,13 @@
     <h1><%= @project.name %>: Manage Members</h1>
   </div>
 
-
   <ol class="breadcrumb">
     <li><%= link_to 'Projects', projects_path %></li>
     <li><%= link_to @project.name, project_path(@project) %></li>
     <li class="active">Memberships</li>
   </ol>
+
+  <% if project_owner_membership_index? %>
   <%= render partial: 'share/form', locals: { user: @membership } %>
   <div class="well form-inline">
     <%= form_for [@project, @membership] do |f| %>
@@ -17,15 +18,21 @@
     <%= f.submit 'Add New Member', class: "btn btn-primary" %>
     <% end %>
   </div>
+  <% end %>
 
   <% @project.memberships.each do |membership| %>
   <div class="form-inline">
     <%= form_for [@project, membership] do |f| %>
     <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
+    <% if project_owner_membership_index? %>
     <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
     <%= f.submit 'Update', class: 'btn btn-info' %>
     <%= link_to project_membership_path(@project, membership), method: :delete do  %>
-      <i class="glyphicon glyphicon-remove"></i><% end %>
+    <i class="glyphicon glyphicon-remove"></i><% end %>
+    <% else %>
+      <%= membership.role %>
     <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
   </div>
+</div>

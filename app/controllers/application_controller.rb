@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
    include SessionsHelper
   before_action :project_memberships
+  helper_method :project_owner?
+  helper_method :project_owner_membership_index?
 
    def current_user
      if session[:user_id]
@@ -37,6 +39,15 @@ class ApplicationController < ActionController::Base
       unless Membership.find_by(project_id: @project, user_id: current_user, role: 1)
         redirect_to project_path(@project)
         flash[:alert] = "You do not have access."
+      end
+    end
+
+    def project_owner_membership_index?
+      @project = Project.find(params[:project_id])
+      if Membership.find_by(project_id: @project, user_id: current_user, role: 1)
+        true
+      else
+        false
       end
     end
 end
