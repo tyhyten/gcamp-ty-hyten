@@ -30,6 +30,8 @@
       <% if !last_owner? %>
     <%= link_to project_membership_path(@project, membership), method: :delete do  %>
     <i class="glyphicon glyphicon-remove"></i><% end %>
+      <% else %>
+        You are the last owner.
       <% end %>
     <% else %>
       <%= membership.role %>

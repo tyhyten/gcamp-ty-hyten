@@ -1,11 +1,12 @@
   class UsersController < ApplicationController
   layout 'current_user'
+  before_action :user_valid?, only: [:edit]
   def index
     @users = User.all
   end
 
   def show
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -40,7 +41,6 @@
 
   def destroy
     @user = User.destroy(params[:id])
-
     @user.destroy
     redirect_to users_path, notice: 'User was successfully deleted'
   end
@@ -51,7 +51,11 @@
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
-  # def edit_params
-  #   params.require(:user).permit(:first_name, :last_name, :email)
-  # end
+  def user_valid?
+    @user = User.find(params[:id])
+    unless current_user == @user
+      render '../../public/404', layout: false
+    end
+  end
+
 end

@@ -51,11 +51,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
-
     def last_owner?
       project = Project.find(params[:project_id])
       count = project.memberships.where(role: 1).count
       count == 1
     end
+
+    
 
 end
