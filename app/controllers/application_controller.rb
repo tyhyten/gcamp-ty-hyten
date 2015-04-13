@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :project_owner_membership_index?
   helper_method :existing_member?
   helper_method :last_owner?
+  helper_method :admin_user?
    def current_user
      if session[:user_id]
        User.find(session[:user_id])
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
 
     def existing_member?
       @project = Project.find(params[:project_id])
-      unless @project.users.include?(current_user)
+      unless @project.users.include?(current_user) || (current_user.admin == true)
         redirect_to projects_path
         flash[:alert] = "You do not have access to that project."
       end
@@ -36,7 +37,7 @@ class ApplicationController < ActionController::Base
 
     def project_owner?
       @project = Project.find(params[:id])
-      unless Membership.find_by(project_id: @project, user_id: current_user, role: 1)
+      unless Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
         redirect_to project_path(@project)
         flash[:alert] = "You do not have access."
       end
@@ -44,7 +45,7 @@ class ApplicationController < ActionController::Base
 
     def project_owner_membership_index?
       @project = Project.find(params[:project_id])
-      if Membership.find_by(project_id: @project, user_id: current_user, role: 1)
+      if Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
         true
       else
         false
@@ -53,10 +54,8 @@ class ApplicationController < ActionController::Base
 
     def last_owner?
       project = Project.find(params[:project_id])
-      count = project.memberships.where(role: 1).count
+      count = project.memberships.where(role: 1).count || (current_user.admin == true)
       count == 1
     end
-
-    
 
 end

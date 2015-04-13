@@ -15,11 +15,22 @@
       </thead>
 
       <tbody>
+        <% if current_user.admin == true %>
+        <% @admin_projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project %></td>
+          <td><%= project.tasks.count %></td>
+        </tr>
+        <% end %>
+        <% end %>
+
+        <% if current_user.admin == (false || nil) %>
         <% @projects.each do |project| %>
         <tr>
           <td><%= link_to project.name, project %></td>
           <td><%= project.tasks.count %></td>
         </tr>
+        <% end %>
         <% end %>
       </tbody>
 
