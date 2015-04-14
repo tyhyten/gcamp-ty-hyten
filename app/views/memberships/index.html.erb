@@ -21,26 +21,29 @@
   <% end %>
 
   <% @project.memberships.each do |membership| %>
-  <div class="form-inline">
+    <div class="form-inline">
     <%= form_for [@project, membership] do |f| %>
-    <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
-    <% if project_owner_membership_index? %>
-    <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
-    <%= f.submit 'Update', class: 'btn btn-info' %>
-      <% if !last_owner? %>
-    <%= link_to project_membership_path(@project, membership), method: :delete do  %>
-    <i class="glyphicon glyphicon-remove"></i><% end %>
-      <% else %>
-        You are the last owner.
-      <% end %>
-    <% else %>
-      <%= membership.role %>
-    <% if current_user.id == membership.user_id  %>
-      <%= link_to project_membership_path(@project, membership), method: :delete do  %>
-      <i class="glyphicon glyphicon-remove"></i><% end %>
-    <% end  %>
+      <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
+      <% if project_owner_membership_index? %>
+        <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
+        <%= f.submit 'Update', class: 'btn btn-info' %>
+          <% if @project.memberships.where(role: 1).count == 1 && (membership.role == 'owner')%>
+            You are the last owner.
+          <% else %>
+            <%= link_to project_membership_path(@project, membership), method: :delete do  %>
+            <i class="glyphicon glyphicon-remove"></i><% end %>
+          <% end %>
+      <% end  %>
     <% end %>
-    <% end %>
-    <% end %>
+
+
+      <%# if current_user.id == membership.user_id  %>
+      <%# link_to project_membership_path(@project, membership), method: :delete do  %>
+      <!-- <i class="glyphicon glyphicon-remove"></i> -->
+      <%# end %>
+      <%# end %>
+
+
+  <% end %>
   </div>
 </div>

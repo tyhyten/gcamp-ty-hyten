@@ -9,13 +9,17 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       log_in @user
-      redirect_to projects_path, notice: 'User was successfully signed in'
+      redirect_to projects_path , notice: 'User was successfully signed in'
     else
       @user = User.new # can delete this?
       @user.errors[:base] << ("User/Password incorrect")
       render 'new'
     end
   end
+
+  # def store_return_to
+  #   session[:return_to] = request.fullpath
+  # end
 
   def destroy
     log_out

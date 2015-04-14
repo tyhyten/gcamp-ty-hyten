@@ -53,9 +53,26 @@ class ApplicationController < ActionController::Base
     end
 
     def last_owner?
-      project = Project.find(params[:project_id])
-      count = project.memberships.where(role: 1).count || (current_user.admin == true)
-      count == 1
+      @project = Project.find(params[:project_id])
+      @membership_count = @project.memberships.where(role: 1).count
+      if @membership_count == 1
+        true
+      end
     end
+
+    # def co_members
+    #   #we're looking for users who have the same project ID's(through memberships) as the current user.
+    #   #so we need to find all of the project ID's that belong to the current user
+    #   #then we need to find all of the other memberships with those project ID's
+    #
+    #
+    #   @user_memberships = current_user.memberships
+    #   @user_memberships_array = @user_memberships.each {|membership| membership}
+    #   @user_memberships_array.where(project_id)
+    #   @other_memberships = Membership.all
+    #   @user_memberships.where(project_id = )
+    #   @other_members =
+    #
+    # end
 
 end

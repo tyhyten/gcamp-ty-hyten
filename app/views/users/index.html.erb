@@ -20,7 +20,7 @@
         <tr>
           <td><%= link_to user.first_name + " " + user.last_name, user %></td>
           <td></td>
-          <% if current_user.id == user.id || current_user.admin == true %>
+          <% if current_user.id == user.id || current_user.admin == true ||  %>
           <td><%= mail_to user.email %></td>
           <td class="text-right">
             <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info' %>
