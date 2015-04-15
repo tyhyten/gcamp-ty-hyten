@@ -1,3 +1,4 @@
+task :database_cleanup => :environment do
   task :delete_old_memberships => :environment do
     desc 'Removes all memberships where their users have already been deleted'
     Membership.all.each do |membership|
@@ -69,3 +70,4 @@
       end
     end
   end
+end
