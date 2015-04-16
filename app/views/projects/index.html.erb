@@ -24,7 +24,7 @@
         <% end %>
         <% end %>
 
-        <% if current_user.admin == (false || nil) %>
+        <% if current_user.admin == (false) %>
         <% @projects.each do |project| %>
         <tr>
           <td><%= link_to project.name, project %></td>
