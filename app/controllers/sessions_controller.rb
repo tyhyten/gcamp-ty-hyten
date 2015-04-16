@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       else
       redirect_to session[:return_to] , notice: 'User was successfully signed in'
       end
-      
+
     else
       @user = User.new # can delete this?
       @user.errors[:base] << ("User/Password incorrect")

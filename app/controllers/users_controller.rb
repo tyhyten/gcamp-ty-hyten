@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, except: [:new]
+  before_action :logged_in?, only: [:index, :show, :edit, :update, :destroy]
   layout 'current_user'
   before_action :user_valid?, only: [:edit]
   before_action :comember_collection, only: [:index, :show]

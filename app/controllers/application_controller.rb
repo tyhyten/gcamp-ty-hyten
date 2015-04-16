@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
    end
 
    def logged_in?
-     session[:return_to] = request.fullpath
      if current_user.nil?
        redirect_to login_path
      end
+     session[:return_to] = request.fullpath
    end
 
     def project_memberships
