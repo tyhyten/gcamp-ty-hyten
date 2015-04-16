@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :password, presence: true, :on => :create
   has_many :memberships, dependent: :destroy
-  has_many :projects, through: :memberships, dependent: :destroy
+  has_many :projects, through: :memberships
 
   has_many :comments
-  has_many :tasks, through: :comments, dependent: :destroy
+  has_many :tasks, through: :comments
   has_secure_password
 
 end

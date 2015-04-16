@@ -42,12 +42,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.destroy(params[:id])
+    @user = User.find(params[:id])
+    @user.comments.map do |comment|
+      comment.user_id = nil
+      comment.save
+    end 
     if @user.destroy
-      @user.comments.map do |comment|
-        comment.user_id = nil
-        comment.save
-      end
       log_out
       redirect_to root_path, alert: 'User was successfully deleted'
     end
