@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     def project_owner?
       @project = Project.find(params[:id])
       unless Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
-        redirect_to project_path(@project)
+        redirect_to projects_path
         flash[:alert] = "You do not have access."
       end
     end

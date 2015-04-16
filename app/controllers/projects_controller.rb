@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :logged_in?
-    before_action :project_owner?, only: [:edit]
+    before_action :project_owner?, only: [:edit, :update,  :destroy]
     layout 'current_user'
     def index
       @user = current_user
@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
     def show
       @project = Project.find(params[:id])
       @memberships = @project.memberships
+      @project_owner = Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
     end
 
     def new
@@ -47,9 +48,11 @@ class ProjectsController < ApplicationController
 
     def destroy
       @project = Project.destroy(params[:id])
-
-      @project.destroy
+      if @project.destroy
       redirect_to projects_path, alert: 'Project was succssfully deleted'
+      else
+       flash[:alert] = "You do not have access."
+     end
     end
 
     private

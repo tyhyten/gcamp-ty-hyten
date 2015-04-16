@@ -1,7 +1,9 @@
 <div class="container">
   <div class="page-header">
     <div class="pull-right">
+      <% if @project_owner %>
       <%= link_to 'Edit', edit_project_path, class: 'btn btn-info' %>
+      <% end %>
       <%= link_to 'New Task', new_project_task_path(@project), class: 'btn btn-default'  %>
   </div>
 
@@ -14,11 +16,11 @@
 
   <p><%= link_to "#{@project.tasks.count} Tasks", project_tasks_path(@project) %></p>
   <p><%= link_to "#{@memberships.count} Memberships", project_memberships_path(@project) %></p>
-
+  <% if @project_owner %>
   <div class="well">
     <p><strong>Delete</strong></p>
     <%= "Deleting this project will aslo delete #{pluralize(@memberships.count, 'membership', 'memberships')}, #{pluralize(@project.tasks.count, 'task', 'tasks')} and associated comments" %>
     <p><%= link_to 'Delete', project_path, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %></p>
   </div>
-
+  <% end %>
 </div>
