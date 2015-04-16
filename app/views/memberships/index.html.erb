@@ -9,7 +9,7 @@
     <li class="active">Memberships</li>
   </ol>
 
-  <% if project_owner_membership_index? %>
+  <% if @project_owner %>
   <%= render partial: 'share/form', locals: { user: @membership } %>
   <div class="well form-inline">
     <%= form_for [@project, @membership] do |f| %>
@@ -25,7 +25,7 @@
     <%= form_for [@project, membership] do |f| %>
       <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
 
-      <% if project_owner_membership_index? && !() %>
+      <% if @project_owner && !() %>
         <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
         <%= f.submit 'Update', class: 'btn btn-info' %>
           <% if @project.memberships.where(role: 1).count == 1 && (membership.role == 'owner')%>
@@ -36,7 +36,7 @@
           <% end %>
       <% end  %>
       <% if current_user.id == membership.user_id && !(@project.memberships.where(role: 1).count == 1 && (membership.role == 'owner')) %>
-        <% unless project_owner_membership_index? %>
+        <% unless @project_owner %>
         <%= link_to project_membership_path(@project, membership), method: :delete do  %>
         <i class="glyphicon glyphicon-remove"></i>
         <% end %>

@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
   before_action :logged_in?
   before_action :existing_member?
-  before_action :project_owner_membership_index?, only: [:new, :create, :update]
+  before_action :project_owner_two?, only: [:new, :create, :edit, :update]
   # before_action :not_last_owner?, only: [:update, :new, :destroy]
   layout 'current_user'
   def index
@@ -9,6 +9,8 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
     @membership = Membership.new
     @memberships = @project.memberships.all
+    @project_owner = Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
+
   end
 
   def new

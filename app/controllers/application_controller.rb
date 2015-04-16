@@ -44,6 +44,22 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    # def membership_owner?
+    #   @project = Project.find(params[:project_id])
+    #   unless Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
+    #     redirect_to project_path(@project)
+    #     flash[:alert] = "You do not have access."
+    #   end
+    # end
+
+    def project_owner_two?
+      @project = Project.find(params[:project_id])
+      unless Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
+        redirect_to project_path(@project)
+        flash[:alert] = "You do not have access."
+      end
+    end
+
     def project_owner_membership_index?
       @project = Project.find(params[:project_id])
       if Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
