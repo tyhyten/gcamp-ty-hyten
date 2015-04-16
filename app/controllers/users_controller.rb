@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
+  before_action :logged_in?
   layout 'current_user'
   before_action :user_valid?, only: [:edit]
   before_action :comember_collection, only: [:index, :show]
-  # before_action :
   def index
     @users = User.all
   end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     @user.comments.map do |comment|
       comment.user_id = nil
       comment.save
-    end 
+    end
     if @user.destroy
       log_out
       redirect_to root_path, alert: 'User was successfully deleted'

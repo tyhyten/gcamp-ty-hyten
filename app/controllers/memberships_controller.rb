@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  before_action :logged_in?
   before_action :existing_member?
   before_action :project_owner_membership_index?, only: [:new, :create, :update]
   # before_action :not_last_owner?, only: [:update, :new, :destroy]

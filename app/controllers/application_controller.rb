@@ -16,8 +16,9 @@ class ApplicationController < ActionController::Base
    end
 
    def logged_in?
+     session[:return_to] = request.fullpath
      if current_user.nil?
-       redirect_to root_path
+       redirect_to login_path
      end
    end
 
@@ -60,12 +61,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    # def co_members
-    #   #we're looking for users who have the same project ID's(through memberships) as the current user.
-    #   #so we need to find all of the project ID's that belong to the current user
-    #   #then we need to find all of the other memberships with those project ID's
-    #
-    #
     #   @user_memberships = current_user.memberships
     #   @user_memberships_array = @user_memberships.each {|membership| membership}
     #   @user_memberships_array.where(project_id)

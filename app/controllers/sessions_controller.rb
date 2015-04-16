@@ -1,11 +1,9 @@
 class SessionsController < ApplicationController
-  before_action :set_previous_page
-
-  def set_previous_page
-   unless request.referer.include?('/login')
-     session[:return_to] = request.referer
-   end
-  end
+  # before_action :set_previous_page
+  #
+  # def set_previous_page
+  #    session[:return_to] = request.fullpath
+  # end
 
   def new
     @user = User.new
@@ -16,7 +14,12 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       log_in @user
-      redirect_to (session[:return_to]) , notice: 'User was successfully signed in'
+      if session[:return_to] == nil
+      redirect_to projects_path, notice: 'User was successfully signed in'
+      else
+      redirect_to session[:return_to] , notice: 'User was successfully signed in'
+      end
+      
     else
       @user = User.new # can delete this?
       @user.errors[:base] << ("User/Password incorrect")
