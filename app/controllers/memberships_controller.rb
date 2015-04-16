@@ -28,8 +28,8 @@ class MembershipsController < ApplicationController
   def destroy
     @membership = Membership.find(params[:id])
     @project = Project.find(params[:project_id])
-    if (current_user.id == @membership.user_id) || (current_user.admin == true)
-    @membership.destroy
+    # if (current_user.id == @membership.user_id) || (current_user.admin == true)
+    if @membership.destroy
       redirect_to project_path(@project), alert: "#{@membership.user.full_name} was successfully deleted"
     end
   end
@@ -37,8 +37,8 @@ class MembershipsController < ApplicationController
   def update
     @project = Project.find(params[:project_id])
     @membership = Membership.find(params[:id])
-    if !last_owner? || (current_user.admin == true)
-    @membership.update(membership_params)
+    # if !last_owner? || (current_user.admin == true)
+    if @membership.update(membership_params)
       redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was successfully updated"
     else
       redirect_to project_memberships_path(@project)
