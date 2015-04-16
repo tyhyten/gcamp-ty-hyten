@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
-  has_many :comments
-  has_many :users, through: :comments
+  has_many :comments, dependent: :destroy
+  has_many :users, through: :comments, dependent: :destroy
   validates :description, presence: true
   belongs_to :project
 end
