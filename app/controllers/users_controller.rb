@@ -1,6 +1,8 @@
-  class UsersController < ApplicationController
+class UsersController < ApplicationController
   layout 'current_user'
   before_action :user_valid?, only: [:edit]
+  before_action :comember_collection, only: [:index, :show]
+  # before_action :
   def index
     @users = User.all
   end
@@ -43,6 +45,12 @@
     @user = User.destroy(params[:id])
     @user.destroy
     redirect_to users_path, notice: 'User was successfully deleted'
+  end
+
+  def comember_collection
+  @comembers = current_user.projects.map do |project|
+      project.users
+    end
   end
 
   private

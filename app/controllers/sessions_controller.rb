@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-  before_action :set_page
+  before_action :set_previous_page
 
-  def set_page
+  def set_previous_page
    unless request.referer.include?('/login')
      session[:return_to] = request.referer
    end
@@ -23,14 +23,6 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
-
-  # redirect_to(session[:return_to] || default)
-  #     session[:return_to] = nil
-
-
-  # def store_return_to
-  #   session[:return_to] = request.fullpath
-  # end
 
   def destroy
     log_out
