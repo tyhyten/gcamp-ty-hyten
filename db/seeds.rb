@@ -1,8 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#  cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create(first_name: "Admin", last_name: "Admin", email: "admin@example.com", password: "password", admin: true)
+User.create(first_name: "Randy", last_name: "Stevens", email: "a@example.com", password: "password", admin: false)
+User.create(first_name: "Willy", last_name: "Leathers", email: "b@example.com", password: "password", admin: false)
+User.create(first_name: "Tickle", last_name: "Monster", email: "c@example.com", password: "password", admin: false)
+User.create(first_name: "Bean", last_name: "Cashmir", email: "e@example.com", password: "password", admin: false)
+User.create(first_name: "Red", last_name: "Walston III", email: "f@example.com", password: "password", admin: false)
+User.create(first_name: "Greg", last_name: "Alan", email: "g@example.com", password: "password", admin: false)
+User.create(first_name: "Daniel", last_name: "Roberts", email: "h@example.com", password: "password", admin: false)
+User.create(first_name: "Paul", last_name: "Wall", email: "i@example.com", password: "password", admin: false)
+User.create(first_name: "Mongo", last_name: "D.B.", email: "j@example.com", password: "password", admin: false)
+User.create(first_name: "Ronald", last_name: "Muckletooth", email: "jj@example.com", password: "password", admin: false)
