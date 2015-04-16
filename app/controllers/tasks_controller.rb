@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  layout 'current_user'
+  layout 'application'
   before_action :existing_member?
   before_action :logged_in?
   before_action :set_task, only: [:show, :edit, :update, :destroy]
@@ -52,7 +52,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-      redirect_to project_tasks_path, notice: 'Task was successfully destroyed.'
+      redirect_to project_tasks_path, alert: 'Task was successfully destroyed.'
   end
 
   private

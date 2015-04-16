@@ -30,7 +30,7 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
     if (current_user.id == @membership.user_id) || (current_user.admin == true)
     @membership.destroy
-      redirect_to project_path(@project), notice: "#{@membership.user.full_name} was successfully deleted"
+      redirect_to project_path(@project), alert: "#{@membership.user.full_name} was successfully deleted"
     end
   end
 
