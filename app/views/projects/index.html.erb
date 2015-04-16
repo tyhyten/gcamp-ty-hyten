@@ -18,7 +18,7 @@
         <% if current_user.admin == true %>
         <% @admin_projects.each do |project| %>
         <tr>
-          <td><%= link_to project.name, project %></td>
+          <td><%= link_to project.name, project, id: "new-pro" %></td>
           <td><%= project.tasks.count %></td>
         </tr>
         <% end %>

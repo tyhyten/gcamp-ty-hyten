@@ -60,14 +60,14 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def project_owner_membership_index?
-      @project = Project.find(params[:project_id])
-      if Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
-        true
-      else
-        false
-      end
-    end
+    # def project_owner_membership_index?
+    #   @project = Project.find(params[:project_id])
+    #   if Membership.find_by(project_id: @project, user_id: current_user, role: 1) || (current_user.admin == true)
+    #     true
+    #   else
+    #     false
+    #   end
+    # end
 
     def last_owner?
       @project = Project.find(params[:project_id])

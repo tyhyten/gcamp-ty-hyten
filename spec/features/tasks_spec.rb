@@ -3,19 +3,17 @@ require 'rails_helper'
 describe 'User can CRUD tasks' do
 
   before :each do
-    @project = Project.create(name: "projecto")
-    @task = Task.create(description: "tasks are for kids, silly rabbit")
-    visit '/signup'
-    fill_in 'user[first_name]', :with => "Bean"
-    fill_in 'user[last_name]', :with => "Wilson"
-    fill_in 'user[email]', :with => "bwilson@aol.com"
-    fill_in 'user[password]', :with => "123456"
-    fill_in 'user[password_confirmation]', :with => "123456"
+    User.create(id: 2, first_name: "Test", last_name: "User", email: "test@user.com", password: "password", admin: false)
+    Project.create(id: 2, name: "grapefruit")
+    Membership.create(project_id: 2, user_id: 2, role: 1)
 
-    click_on "Sign Up!"
+    visit '/login'
+    fill_in 'email', :with => "test@user.com"
+    fill_in 'password', :with => "password"
+    click_on "Sign In!"
     visit '/projects'
-    click_on "projecto"
-    click_on "New Task"
+    click_link("grapefruit", match: :first)
+    click_link("New Task", match: :first)
     fill_in 'task[description]', :with => "vegan dog"
     click_on "Create Task"
   end

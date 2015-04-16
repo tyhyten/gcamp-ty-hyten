@@ -19,7 +19,7 @@ describe 'User can sign up' do
   end
 
   scenario 'guest redirects to the correct spot upon sign up' do
-    expect(page).to have_content "gCamp has changed my life!"
+    expect(page).to have_content "Project"
   end
 
   scenario 'guest can see validation messages' do
