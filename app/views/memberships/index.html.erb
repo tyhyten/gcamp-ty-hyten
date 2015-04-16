@@ -24,7 +24,7 @@
     <div class="form-inline">
     <%= form_for [@project, membership] do |f| %>
       <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
-            <% if current_user.id == membership.user_id  %>
+            <% if current_user.id == membership.user_id && !(@project.memberships.where(role: 1).count == 1 && (membership.role == 'owner')) %>
             <%= link_to project_membership_path(@project, membership), method: :delete do  %>
             <i class="glyphicon glyphicon-remove"></i>
             <% end %>
