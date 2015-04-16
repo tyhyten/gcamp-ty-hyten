@@ -24,6 +24,11 @@
     <div class="form-inline">
     <%= form_for [@project, membership] do |f| %>
       <%= link_to membership.user.full_name, project_membership_path(@project, membership) %>
+            <% if current_user.id == membership.user_id  %>
+            <%= link_to project_membership_path(@project, membership), method: :delete do  %>
+            <i class="glyphicon glyphicon-remove"></i>
+            <% end %>
+            <% end %>
       <% if project_owner_membership_index? %>
         <%= f.select(:role, [["Member", :member],["Owner", :owner]], {include_blank: false}, {class: "form-control"}) %>
         <%= f.submit 'Update', class: 'btn btn-info' %>
@@ -37,11 +42,7 @@
     <% end %>
 
 
-      <%# if current_user.id == membership.user_id  %>
-      <%# link_to project_membership_path(@project, membership), method: :delete do  %>
-      <!-- <i class="glyphicon glyphicon-remove"></i> -->
-      <%# end %>
-      <%# end %>
+
 
 
   <% end %>

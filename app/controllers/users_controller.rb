@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.destroy(params[:id])
     @user.destroy
-    redirect_to users_path, notice: 'User was successfully deleted'
+    redirect_to users_path, alert: 'User was successfully deleted'
   end
 
   def comember_collection
