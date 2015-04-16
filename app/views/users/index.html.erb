@@ -23,13 +23,15 @@
           <% if @comembers.flatten.include?(user) || current_user.id == user.id || current_user.admin == true %>
           <td><%= mail_to user.email %></td>
           <td class="text-right">
-            <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info' %>
-            <%= link_to 'Delete', user, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
+              <% if current_user.id == user.id || current_user.admin == true %>
+              <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info' %>
+              <%= link_to 'Delete', user, class: 'btn btn-danger',  method: :delete, data: { confirm: 'Are you sure?'} %>
+              <% end %>
             <% else %>
             <td></td>
             <td></td>
             <% end %>
-          </td>
+          </td></td>
         </tr>
         <% end %>
       </tbody>
