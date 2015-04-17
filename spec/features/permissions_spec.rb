@@ -11,11 +11,15 @@ describe 'Permissions' do
     #project 2
     Project.create(id: 14, name: "apple")
 
+    #project 3
+    Project.create(id: 66, name: "chocolate")
+
     #task 1 for project 1
     Task.create(id: 11, description: "testy", complete: false, project_id: 11)
 
     Membership.create(project_id: 11, user_id: 22, role: 1)
     Membership.create(project_id: 14, user_id: 22, role: 0)
+    Membership.create(id: 1, project_id: 66, user_id: 33, role: 0)
 
     visit '/login'
     fill_in 'email', :with => "testtesty@user.com"
@@ -78,20 +82,23 @@ describe 'Permissions' do
     expect(page).to have_content "The page you were looking for doesn't exist."
   end
 
-  scenario 'Admin users can do everything' do
-    expect(page).to have_content
-  end
+  # scenario 'Admin users can do everything' do
+  #
+  #   expect(page).to have_content
+  # end
 
   scenario 'Users cannot see email addresses of other users' do
-    expect(page).to have_content
+    visit '/users'
+    expect(page).not_to have_content "test@user.com"
   end
 
   scenario 'Users can only manage tasks under projects that they are members of' do
-    expect(page).to have_content
+    visit '/projects/66/memberships'
+    expect(page).not_to have_content "Add New Memebership"
   end
 
-  scenario 'Users can see email addresses of other users who are on the same projects they are on ' do
-    expect(page).to have_content
-  end
+  # scenario 'Users can see email addresses of other users who are on the same projects they are on ' do
+  #   expect(page).to have_content
+  # end
 
 end
