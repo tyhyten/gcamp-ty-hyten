@@ -28,7 +28,7 @@ gem 'pg'
 
 gem "spring-commands-rspec"
 
-
+gem 'bootswatch-rails'
 
 #gem 'haml'
 # autoprefixer added
