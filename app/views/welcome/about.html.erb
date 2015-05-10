@@ -8,15 +8,13 @@
     <%= image_tag 'sitting.jpg', class: "img-responsive" %>
     </div>
     <div class="col-md-8">
-      <p>We are dedicated to the makers, the creators, the risk-takers.</p>
-        <br>
-      <p>We wake up in the middle of the night and furiously write down ideas about how to make your online life better.</p>
-        <br>
-      <p>Human collaboration and communication is what drives us, and it infuses every feature of gCamp.</p>
     </div>
   </div>
     <div>
-      <p>gCamp is extremely active. Check out our killer stats below!</p>
+      
+      <p>Waffle Iron is an app by <%= link_to 'Ty Hyten', "http://www.linkedin.com/in/tyhyten"  %>. </p>
+      <br>
+      <p>Waffle Iron stats:</p>
       <%= "#{pluralize(@projects.count, 'Project')}, #{pluralize(@tasks.count, 'Tasks')}, #{pluralize(@projects.count, 'Project Member')}, #{pluralize(@users.count, 'User')}, #{pluralize(@comments.count, "Comment")}" %>
     </div>
 </div>

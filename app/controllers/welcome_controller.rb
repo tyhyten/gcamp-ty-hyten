@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @quotes = [["gCamp has changed my life! It's the best tool I've ever used.","Cayla Hayes"],["Before gCamp I was a disorderly slob. Now I'm more organized than I've ever been", "Leta Jaskolski"],["Don't hesitate - sign up right now! You'll never be the same.","Lavern Upton"]]
+    @quotes = [["waffle iron has made life around the house sane again","Casey Kelly"],["A little organization is all I needed to finally get caught up!", "Skeeter Thomas"],["Wow! Really helpful!","Walter Westinghouse"]]
   end
 
   def about
