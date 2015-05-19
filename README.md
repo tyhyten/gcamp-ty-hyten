@@ -1,10 +1,12 @@
 [![Build Status](https://travis-ci.org/tyhyten/gcamp-ty-hyten.svg?branch=master)](https://travis-ci.org/tyhyten/gcamp-ty-hyten)
 
-gCamp project
+Waffle Iron
 
 == README
 
-View on Heroku: https://still-mesa-8083.herokuapp.com/
+Project management app.
+
+View on Heroku: https://waffleiron.herokuapp.com/
 
 ---
 
